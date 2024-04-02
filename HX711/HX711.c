@@ -50,7 +50,6 @@ void hx711_SetGain(HX711_t* hx711, uint8_t gain)
 	switch(hx711->gain)
 	{
 	case ch_A_128:
-		//TODO: check before if DOUT is ready?
 		for(int i=0;i<(24+ch_A_128);i++)
 		{
 			HAL_GPIO_WritePin(hx711->clk_port, hx711->clk_pin, GPIO_PIN_SET);
@@ -131,7 +130,7 @@ uint32_t hx711_Measure(HX711_t* hx711)
 	return mass;
 }
 
-void hx711_tare(HX711_t* hx711)
+void hx711_Tare(HX711_t* hx711)
 {
 	int tare = 0;
 	for(int i=0; i<10; i++)
